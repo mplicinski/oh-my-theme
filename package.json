@@ -5,6 +5,7 @@
     "dev": "vinxi dev",
     "build": "vinxi build",
     "start": "vinxi start",
+    "format": "prettier --write .",
     "build-css": "postcss --use autoprefixer -o dist/main.css src/input.css"
   },
   "dependencies": {

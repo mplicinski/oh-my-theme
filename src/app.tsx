@@ -1,8 +1,8 @@
-import { createSignal } from "solid-js";
-import "./app.css";
+import { createSignal } from 'solid-js'
+import './app.css'
 
 export default function App() {
-  const [count, setCount] = createSignal(0);
+  const [count, setCount] = createSignal(0)
 
   return (
     <main>
@@ -11,12 +11,12 @@ export default function App() {
         Clicks: {count()}
       </button>
       <p>
-        Visit{" "}
+        Visit{' '}
         <a href="https://start.solidjs.com" target="_blank">
           start.solidjs.com
-        </a>{" "}
+        </a>{' '}
         to learn how to build SolidStart apps.
       </p>
     </main>
-  );
+  )
 }
