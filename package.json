@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
-    "start": "vinxi start"
+    "start": "vinxi start",
+    "build-css": "postcss --use autoprefixer -o dist/main.css src/input.css"
   },
   "dependencies": {
     "@solidjs/start": "^1.1.0",
@@ -13,5 +14,15 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.31.0",
+    "eslint-plugin-solid": "^0.14.5",
+    "postcss": "^8.5.6",
+    "postcss-nested": "^7.0.2",
+    "prettier": "^3.6.2"
   }
 }
