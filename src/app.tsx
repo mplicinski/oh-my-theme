@@ -1,12 +1,15 @@
 import { createSignal } from 'solid-js'
+
+import { EditorPanel } from '~/components/EditorPanel'
 import './app.pcss'
 
 export default function App() {
-  const [count, setCount] = createSignal(0)
-
   return (
     <main>
-      <h1>oh my theme</h1>
+      <div>
+        <h1>oh my theme</h1>
+        <EditorPanel />
+      </div>
     </main>
   )
 }

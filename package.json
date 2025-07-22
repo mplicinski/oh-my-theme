@@ -9,6 +9,7 @@
     "build-css": "postcss --use autoprefixer -o dist/main.css src/input.css"
   },
   "dependencies": {
+    "@codemirror/autocomplete": "^6.18.6",
     "@codemirror/commands": "^6.8.1",
     "@codemirror/lang-json": "^6.0.2",
     "@codemirror/language": "^6.11.2",
