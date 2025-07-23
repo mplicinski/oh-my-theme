@@ -17,6 +17,15 @@ import { closeBrackets, closeBracketsKeymap } from '@codemirror/autocomplete'
 import { json } from '@codemirror/lang-json'
 
 import { ThemeStore } from '~/stores/ThemeStore'
+import './EditorPanel.pcss'
+
+// helper function to parse out unicodes characters to plain text
+function escapeUnicode(str: string): string {
+  return str.replace(
+    /[\u007f-\uffff]/g,
+    ch => '\\u' + ('0000' + ch.charCodeAt(0).toString(16)).slice(-4)
+  )
+}
 
 export const EditorPanel = () => {
   let editorRef: HTMLDivElement | undefined
@@ -25,7 +34,7 @@ export const EditorPanel = () => {
   onMount(() => {
     view = new EditorView({
       state: EditorState.create({
-        doc: ThemeStore.themeJSON(),
+        doc: escapeUnicode(ThemeStore.themeJSON()),
         extensions: [
           lineNumbers(),
           highlightActiveLineGutter(),
@@ -54,5 +63,5 @@ export const EditorPanel = () => {
     view?.destroy()
   })
 
-  return <div ref={editorRef} style={{ height: '100%', width: '100%' }} />
+  return <div ref={editorRef} class="editor" />
 }
