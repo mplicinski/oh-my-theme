@@ -16,6 +16,7 @@
     "@codemirror/search": "^6.5.11",
     "@codemirror/state": "^6.5.2",
     "@codemirror/view": "^6.38.1",
+    "@lezer/common": "^1.2.3",
     "@solidjs/start": "^1.1.0",
     "solid-js": "^1.9.5",
     "vinxi": "^0.5.7"

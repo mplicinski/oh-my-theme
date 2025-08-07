@@ -17,6 +17,9 @@ import { closeBrackets, closeBracketsKeymap } from '@codemirror/autocomplete'
 import { json } from '@codemirror/lang-json'
 
 import { ThemeStore } from '~/stores/ThemeStore'
+import { buildPathMap } from '~/lib/jsonPathMap'
+import { PathMapStore } from '~/stores/PathMapStore'
+
 import './EditorPanel.pcss'
 
 // helper function to parse out unicodes characters to plain text
@@ -50,7 +53,13 @@ export const EditorPanel = () => {
           json(),
           EditorView.updateListener.of(update => {
             if (update.docChanged) {
+              const newJSON = update.state.doc.toString()
               ThemeStore.setThemeJSON(update.state.doc.toString())
+
+              const pathMap = buildPathMap(update.state)
+              PathMapStore.setPathMap(pathMap)
+
+              console.log('🔍 Updated PathMap:', pathMap)
             }
           }),
         ],
