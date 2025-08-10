@@ -12,7 +12,7 @@ export interface PathInfo {
 }
 
 /**
- * Builds a map from JSON path strings with their position info in the editor.
+ * Builds a map of JSON with properties as keys and path strings with info of their position in the editor as values.
  */
 export function buildPathMap(state: EditorState): Map<JsonPathString, PathInfo> {
   const map = new Map<JsonPathString, PathInfo>()
@@ -50,7 +50,6 @@ export function buildPathMap(state: EditorState): Map<JsonPathString, PathInfo> 
       return
     }
 
-    // Handle arrays
     if (node.type.name === 'Array') {
       let i = 0
       for (let child = node.firstChild; child; child = child.nextSibling) {

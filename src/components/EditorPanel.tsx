@@ -24,7 +24,7 @@ import { PathMapStore } from '~/stores/PathMapStore'
 
 import './EditorPanel.pcss'
 import { hoveredPath, setHoveredPath } from '~/stores/hoveredPathStore'
-import { findDeepestPath } from '~/lib/findDeepestPath'
+import { findHighlightPath } from '~/lib/findHighlightPath'
 
 const setHoverRange = StateEffect.define<{ from: number; to: number } | null>()
 const hoverDeco = Decoration.mark({ class: 'cm-hovered-range' })
@@ -56,7 +56,7 @@ const mouseHoverHandlers = EditorView.domEventHandlers({
       raf = 0
       const pos = view.posAtCoords({ x: event.clientX, y: event.clientY })
       if (pos == null) return
-      const key = findDeepestPath(PathMapStore.pathMap(), pos)
+      const key = findHighlightPath(PathMapStore.pathMap(), pos)
       if (key !== hoveredPath()) setHoveredPath(key)
     })
   },
