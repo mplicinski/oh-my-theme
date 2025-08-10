@@ -4,11 +4,11 @@ import { syntaxTree } from '@codemirror/language'
 export type JsonPathString = string
 
 export interface PathInfo {
+  key: string // object property name
+  value: string // entire json path of the object property // in some cases just the object value path
   from: number // starting char of object property
   to: number // ending char of object property
-  key: string // object property name
   parentPath: JsonPathString // string path of parent node
-  value: string // entire json path of the object property // in some cases just the object value path
 }
 
 /**
