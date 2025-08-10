@@ -1,11 +1,57 @@
 .editor {
-  height: 100%;
-  width: 100%;
+  --hover-fill: rgba(255, 255, 255, 0.1); /* active background fill */
+  --hover-fill-ghost: rgba(255, 255, 255, 0.05); /* ghost background fill */
+  --hover-stroke: rgba(255, 255, 255, 0.35); /* active outline */
+  --hover-stroke-ghost: rgba(255, 255, 255, 0.2); /* ghost outline */
+  --hover-radius: 6px;
 }
 
-.cm-content .cm-hovered-range {
-  background: rgba(255, 255, 255, 0.7);
-  filter: invert(1);
-  outline: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 2px;
+/* Active highlight */
+.editor .hovered-range {
+  background: var(--hover-fill);
+  color: inherit;
+  border-radius: var(--hover-radius);
+  outline: 1px solid var(--hover-stroke);
+  animation: hoverIn 200ms ease both;
+  pointer-events: none;
+}
+
+/* Ghost highlight fade out */
+.editor .hovered-ghost {
+  background: var(--hover-fill-ghost);
+  color: inherit;
+  border-radius: var(--hover-radius);
+  outline: 1px solid var(--hover-stroke-ghost);
+  animation: hoverOut 300ms ease both;
+  pointer-events: none;
+}
+
+@keyframes hoverIn {
+  from {
+    background: transparent;
+    outline-color: rgba(255, 255, 255, 0);
+  }
+  to {
+    background: var(--hover-fill);
+    outline-color: var(--hover-stroke);
+  }
+}
+
+@keyframes hoverOut {
+  from {
+    background: var(--hover-fill-ghost);
+    outline-color: var(--hover-stroke-ghost);
+  }
+  to {
+    background: transparent;
+    outline-color: rgba(255, 255, 255, 0);
+  }
+}
+
+/* Turn off animations for educed motion users */
+@media (prefers-reduced-motion: reduce) {
+  .editor .hovered-range,
+  .editor .hovered-ghost {
+    animation: none !important;
+  }
 }
